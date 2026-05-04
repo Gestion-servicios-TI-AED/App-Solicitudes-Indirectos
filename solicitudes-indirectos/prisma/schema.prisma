@@ -1,0 +1,274 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ─── Auth (NextAuth v4) ───────────────────────────────────────────────────────
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─── Usuarios y Roles ────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  nombre        String
+  cargo         String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String?
+  telefono      String?
+  rol           String    @default("SOLICITANTE")
+  roles         String    @default("[\"SOLICITANTE\"]")
+  activo        Boolean   @default(true)
+  image         String?
+
+  accounts         Account[]
+  sessions         Session[]
+  solicitudes      Solicitud[]          @relation("Solicitante")
+  aprobaciones     Solicitud[]          @relation("Aprobador")
+  historial        HistorialSolicitud[]
+  frentesAsignados FrenteUsuario[]
+  notificaciones   Notificacion[]
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+}
+
+// ─── Proyectos y Frentes ─────────────────────────────────────────────────────
+
+model Proyecto {
+  id      Int      @id @default(autoincrement())
+  nombre  String
+  activo  Boolean  @default(true)
+  frentes Frente[]
+}
+
+model Frente {
+  id         Int      @id @default(autoincrement())
+  nombre     String
+  proyectoId Int
+  proyecto   Proyecto @relation(fields: [proyectoId], references: [id])
+
+  usuarios        FrenteUsuario[]
+  aprobadorConfig AprobadorFrente?
+}
+
+model FrenteUsuario {
+  userId   String
+  frenteId Int
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  frente   Frente @relation(fields: [frenteId], references: [id], onDelete: Cascade)
+
+  @@id([userId, frenteId])
+}
+
+model AprobadorFrente {
+  id          Int    @id @default(autoincrement())
+  frenteId    Int    @unique
+  aprobadorId String
+  frente      Frente @relation(fields: [frenteId], references: [id])
+}
+
+// ─── Terceros / Debida Diligencia ────────────────────────────────────────────
+
+model Tercero {
+  id                     Int      @id @default(autoincrement())
+  razonSocial            String
+  nit                    String   @unique
+  representanteLegal     String
+  cedulaRepresentante    String
+  correoFirma            String
+  direccionRepresentante String
+  telefonoRepresentante  String
+  nombreContacto         String?
+  telefonoContacto       String?
+  correoContacto         String?
+  tipoContrato           String
+
+  dd_identificacionContraparte  Boolean @default(false)
+  dd_consultaListasRestrictivas Boolean @default(false)
+  dd_verificacionPep            Boolean @default(false)
+  dd_conocimientoNegocio        Boolean @default(false)
+  dd_monitoreoActualizacion     Boolean @default(false)
+  dd_senalesAlertaReporte       Boolean @default(false)
+
+  aprobadoDebidaDiligencia Boolean   @default(false)
+  fechaAprobacion          DateTime?
+
+  solicitudes Solicitud[]
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+}
+
+// ─── Solicitudes ─────────────────────────────────────────────────────────────
+
+model Solicitud {
+  id             Int      @id @default(autoincrement())
+  consecutivo    String   @unique
+  tipo           String   // TipoSolicitud enum stored as string
+  fechaSolicitud DateTime @default(now())
+
+  solicitanteId String
+  solicitante   User   @relation("Solicitante", fields: [solicitanteId], references: [id])
+
+  proyectoId Int
+  frentesIds String @default("[]") // JSON array of Int IDs
+
+  terceroId Int?
+  tercero   Tercero? @relation(fields: [terceroId], references: [id])
+
+  descripcionActividad  String?
+  plazoEjecucion        String?
+  formaPago             String?
+  valorFinal            Decimal?
+  tipoContrato          String?  // TipoContrato enum stored as string
+  asunto                String?
+
+  creacionTercero       Boolean? @default(false)
+  contratanteNombre     String?  @default("AED CONSTRUCTORES S.A.S")
+  contratanteNit        String?  @default("901237628-1")
+  alcance               String?
+  condicionesEspeciales String?
+  valorEnLetras         String?
+
+  docTerminosReferencia     Boolean @default(false)
+  docCamaraComercio         Boolean @default(false)
+  docEstadosFinancieros     Boolean @default(false)
+  docEstadoResultados       Boolean @default(false)
+  docSagrilaft              Boolean @default(false)
+  docComposicionAccionaria  Boolean @default(false)
+  docRut                    Boolean @default(false)
+  docCedulaRepresentante    Boolean @default(false)
+  docCertificacionBancaria  Boolean @default(false)
+  docCotizacion             Boolean @default(false)
+
+  archivoCuadroComparativo String?
+  archivoCotizacion        String?
+  archivoFormatoSolicitud  String?
+  archivoBEP               String?
+  archivosAnexos           String  @default("[]")
+
+  cronograma CronogramaContrato?
+
+  aprobadorId             String?
+  aprobador               User?     @relation("Aprobador", fields: [aprobadorId], references: [id])
+  fechaAprobacionDirector DateTime?
+
+  notaContratacion    String?
+  necesitaRevision    Boolean  @default(false)
+  numeroContratoAdpro String?
+
+  estado    String @default("BORRADOR") // EstadoSolicitud enum stored as string
+  historial HistorialSolicitud[]
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+}
+
+model HistorialSolicitud {
+  id          Int       @id @default(autoincrement())
+  solicitudId Int
+  solicitud   Solicitud @relation(fields: [solicitudId], references: [id])
+  usuarioId   String
+  usuario     User      @relation(fields: [usuarioId], references: [id])
+  accion      String
+  nota        String?
+  fecha       DateTime  @default(now())
+}
+
+// ─── Cronograma ──────────────────────────────────────────────────────────────
+
+model CronogramaContrato {
+  id          Int       @id @default(autoincrement())
+  solicitudId Int       @unique
+  solicitud   Solicitud @relation(fields: [solicitudId], references: [id])
+  tieneFases  Boolean   @default(false)
+  fechaInicio DateTime
+  fechaFin    DateTime
+
+  fases       FaseCronograma[]
+  actividades ActividadCronograma[]
+
+  creadoEn DateTime @default(now())
+}
+
+model FaseCronograma {
+  id           Int                @id @default(autoincrement())
+  cronogramaId Int
+  cronograma   CronogramaContrato @relation(fields: [cronogramaId], references: [id], onDelete: Cascade)
+  numeroFase   Int
+  nombreFase   String
+  fechaInicio  DateTime
+  fechaFin     DateTime
+  actividades  ActividadCronograma[]
+}
+
+model ActividadCronograma {
+  id           Int                @id @default(autoincrement())
+  cronogramaId Int
+  cronograma   CronogramaContrato @relation(fields: [cronogramaId], references: [id], onDelete: Cascade)
+  faseId       Int?
+  fase         FaseCronograma?    @relation(fields: [faseId], references: [id], onDelete: SetNull)
+  descripcion  String
+  fechaInicio  DateTime
+  fechaFin     DateTime
+  responsable  String?
+}
+
+// ─── Notificaciones ──────────────────────────────────────────────────────────
+
+model Notificacion {
+  id       Int      @id @default(autoincrement())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titulo   String
+  mensaje  String
+  leida    Boolean  @default(false)
+  url      String?
+  creadoEn DateTime @default(now())
+}
+
+// ─── Contador de Consecutivos ─────────────────────────────────────────────────
+
+model ContadorConsecutivo {
+  tipo  String @id
+  anio  Int
+  ultimo Int   @default(0)
+}

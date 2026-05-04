@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/solicitudes/nueva/page.tsx\")",
+      "Bash(cat \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/solicitudes/[id]/page.tsx\")",
+      "Bash(wc -l \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/solicitudes/nueva/CONTRATO/page.tsx\" \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/components/forms/CronogramaBuilder.tsx\" \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/api/upload/route.ts\" \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/api/solicitudes/cronograma/export/route.ts\" \"C:/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/api/solicitudes/[id]/documento/route.ts\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/configuracion/\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/configuracion/usuarios/\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/configuracion/aprobadores/\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/configuracion/frentes/\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/perfil/\")",
+      "Bash(ls \"/c/SOLICITUD INDIRECTOS/solicitudes-indirectos/src/app/\\(app\\)/solicitudes/[id]/editar/\")",
+      "Bash(npm install tsx --save-dev)",
+      "Bash(npx prisma generate)",
+      "Bash(npm install @prisma/adapter-pg pg @types/pg)"
+    ],
+    "additionalDirectories": [
+      "C:\\SOLICITUD INDIRECTOS\\solicitudes-indirectos\\src\\app\\api\\solicitudes\\[id]",
+      "C:\\SOLICITUD INDIRECTOS\\solicitudes-indirectos\\src\\app\\(app)\\solicitudes\\[id]"
+    ]
+  }
+}

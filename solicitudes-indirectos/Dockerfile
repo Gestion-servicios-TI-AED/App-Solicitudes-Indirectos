@@ -12,10 +12,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Generate Prisma client
-RUN npx prisma generate
-
-# Build Next.js
+# Build Next.js (Prisma client is pre-generated and committed to the repo)
 RUN npm run build
 
 # ─── Stage 3: Runner ──────────────────────────────────────────────────────────

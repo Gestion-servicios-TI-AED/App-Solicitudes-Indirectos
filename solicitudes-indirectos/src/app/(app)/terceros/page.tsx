@@ -2,7 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Plus, Search, Users, CheckCircle, Clock, Eye, Pencil } from "lucide-react";
+import {
+  Plus, Search, Users, CheckCircle, Clock,
+  Eye, Pencil, RefreshCw, X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useSession } from "next-auth/react";
@@ -14,6 +17,7 @@ interface Tercero {
   razonSocial: string;
   nit: string;
   tipoContrato: string;
+  confidencialidad: boolean;           // ← NUEVO
   dd_identificacionContraparte: boolean;
   dd_consultaListasRestrictivas: boolean;
   dd_verificacionPep: boolean;
@@ -40,7 +44,19 @@ const TIPO_CONTRATO_LABEL: Record<string, string> = {
   OBRA: "Obra",
   DISENO: "Diseño",
   SERVICIOS: "Servicios",
+  PROYECTOS: "Proyectos",
+  LICITACIONES: "Licitaciones",
 };
+
+// ─── Toast simple ─────────────────────────────────────────────────────────────
+
+interface Toast {
+  id: number;
+  type: "success" | "error";
+  message: string;
+}
+
+let toastId = 0;
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -49,9 +65,19 @@ export default function TercerosPage() {
   const rol = session?.user?.rol;
   const canEdit = rol === "CONTRATOS" || rol === "ADMIN";
 
-  const [terceros, setTerceros] = useState<Tercero[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [terceros, setTerceros]   = useState<Tercero[]>([]);
+  const [loading, setLoading]     = useState(true);
+  const [syncing, setSyncing]     = useState(false);
+  const [search, setSearch]       = useState("");
+  const [toasts, setToasts]       = useState<Toast[]>([]);
+
+  // ── Helpers ──────────────────────────────────────────────────────────────────
+
+  const addToast = (type: Toast["type"], message: string) => {
+    const id = ++toastId;
+    setToasts((prev) => [...prev, { id, type, message }]);
+    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 4000);
+  };
 
   const fetchTerceros = useCallback(async () => {
     setLoading(true);
@@ -66,20 +92,58 @@ export default function TercerosPage() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchTerceros();
-  }, [fetchTerceros]);
+  useEffect(() => { fetchTerceros(); }, [fetchTerceros]);
+
+  // ── Sync SharePoint ───────────────────────────────────────────────────────────
+
+  const handleSync = async () => {
+    setSyncing(true);
+    try {
+      const res = await fetch("/api/terceros/sync-sharepoint", { method: "POST" });
+      const data = await res.json();
+      if (data.ok) {
+        addToast("success", data.message);
+        await fetchTerceros();          // recargar tabla
+      } else {
+        addToast("error", data.message ?? "Error al sincronizar");
+      }
+    } catch {
+      addToast("error", "No se pudo conectar con el servidor");
+    } finally {
+      setSyncing(false);
+    }
+  };
+
+  // ── Filter ────────────────────────────────────────────────────────────────────
 
   const filtered = terceros.filter((t) => {
     if (!search) return true;
     const q = search.toLowerCase();
     return (
-      t.razonSocial.toLowerCase().includes(q) || t.nit.toLowerCase().includes(q)
+      t.razonSocial.toLowerCase().includes(q) ||
+      t.nit.toLowerCase().includes(q)
     );
   });
 
+  // ── Render ────────────────────────────────────────────────────────────────────
+
   return (
     <div className="space-y-5 max-w-7xl mx-auto">
+
+      {/* Toast notifications */}
+      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+        {toasts.map((t) => (
+          <div
+            key={t.id}
+            className={`pointer-events-auto flex items-start gap-2 rounded-lg px-4 py-3 text-sm shadow-lg text-white
+              ${t.type === "success" ? "bg-green-600" : "bg-red-600"}`}
+          >
+            {t.type === "success" ? <CheckCircle size={15} className="mt-0.5 shrink-0" /> : <X size={15} className="mt-0.5 shrink-0" />}
+            <span>{t.message}</span>
+          </div>
+        ))}
+      </div>
+
       {/* Header */}
       <div className="flex items-center justify-between gap-4">
         <div>
@@ -90,12 +154,22 @@ export default function TercerosPage() {
             Gestión de proveedores y contratistas
           </p>
         </div>
-        <Link href="/terceros/nuevo">
-          <Button>
-            <Plus size={16} />
-            Nuevo Tercero
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={handleSync}
+            disabled={syncing}
+          >
+            <RefreshCw size={15} className={syncing ? "animate-spin" : ""} />
+            {syncing ? "Sincronizando..." : "Sincronizar SharePoint"}
           </Button>
-        </Link>
+          <Link href="/terceros/nuevo">
+            <Button>
+              <Plus size={16} />
+              Nuevo Tercero
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Search */}
@@ -135,7 +209,7 @@ export default function TercerosPage() {
             <p className="text-xs text-gray-500 mt-1">
               {search
                 ? "Prueba con otro término de búsqueda."
-                : "Registra el primer tercero para comenzar."}
+                : "Registra el primer tercero o sincroniza desde SharePoint."}
             </p>
           </div>
         ) : (
@@ -145,10 +219,10 @@ export default function TercerosPage() {
                 <tr className="bg-gray-50">
                   {[
                     "Razón Social",
-                    "NIT",
                     "Tipo Contrato",
                     "DD Progress",
-                    "Estado",
+                    "Debida Diligencia",
+                    "Confidencialidad",
                     "Acciones",
                   ].map((h) => (
                     <th
@@ -163,20 +237,12 @@ export default function TercerosPage() {
               <tbody className="divide-y divide-gray-100">
                 {filtered.map((t) => {
                   const count = ddCount(t);
-                  const pct = Math.round((count / 6) * 100);
+                  const pct   = Math.round((count / 6) * 100);
 
                   return (
-                    <tr
-                      key={t.id}
-                      className="hover:bg-gray-50 transition-colors"
-                    >
+                    <tr key={t.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-4 py-3">
-                        <p className="text-sm font-medium text-gray-900">
-                          {t.razonSocial}
-                        </p>
-                      </td>
-                      <td className="px-4 py-3 text-sm text-gray-500 font-mono whitespace-nowrap">
-                        {t.nit}
+                        <p className="text-sm font-medium text-gray-900">{t.razonSocial}</p>
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
                         {TIPO_CONTRATO_LABEL[t.tipoContrato] ?? t.tipoContrato}
@@ -186,49 +252,55 @@ export default function TercerosPage() {
                           <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                             <div
                               className={`h-full rounded-full transition-all ${
-                                count === 6
-                                  ? "bg-green-500"
-                                  : count >= 3
-                                  ? "bg-blue-500"
-                                  : "bg-gray-400"
+                                count === 6 ? "bg-green-500" : count >= 3 ? "bg-blue-500" : "bg-gray-400"
                               }`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>
-                          <span className="text-xs text-gray-500 whitespace-nowrap">
-                            {count}/6
-                          </span>
+                          <span className="text-xs text-gray-500 whitespace-nowrap">{count}/6</span>
                         </div>
                       </td>
+
+                      {/* Debida Diligencia badge */}
                       <td className="px-4 py-3 whitespace-nowrap">
                         {t.aprobadoDebidaDiligencia ? (
                           <span className="inline-flex items-center gap-1 text-xs font-medium bg-green-100 text-green-700 rounded-full px-2.5 py-0.5">
-                            <CheckCircle size={11} />
-                            Aprobado
+                            <CheckCircle size={11} /> Sí
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-100 text-yellow-700 rounded-full px-2.5 py-0.5">
-                            <Clock size={11} />
-                            Pendiente
+                          <span className="inline-flex items-center gap-1 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2.5 py-0.5">
+                            <X size={11} /> No
                           </span>
                         )}
                       </td>
+
+                      {/* Confidencialidad badge — NUEVO */}
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        {t.confidencialidad ? (
+                          <span className="inline-flex items-center gap-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5">
+                            <CheckCircle size={11} /> Sí
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2.5 py-0.5">
+                            <X size={11} /> No
+                          </span>
+                        )}
+                      </td>
+
                       <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           <Link
                             href={`/terceros/${t.id}`}
                             className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 font-medium"
                           >
-                            <Eye size={13} />
-                            Ver Detalle
+                            <Eye size={13} /> Ver Detalle
                           </Link>
                           {canEdit && (
                             <Link
                               href={`/terceros/${t.id}`}
                               className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 font-medium"
                             >
-                              <Pencil size={12} />
-                              Editar
+                              <Pencil size={12} /> Editar
                             </Link>
                           )}
                         </div>

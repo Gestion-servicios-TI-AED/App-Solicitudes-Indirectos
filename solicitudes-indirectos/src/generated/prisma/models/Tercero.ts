@@ -38,15 +38,8 @@ export type TerceroMinAggregateOutputType = {
   id: number | null
   razonSocial: string | null
   nit: string | null
-  representanteLegal: string | null
-  cedulaRepresentante: string | null
-  correoFirma: string | null
-  direccionRepresentante: string | null
-  telefonoRepresentante: string | null
-  nombreContacto: string | null
-  telefonoContacto: string | null
-  correoContacto: string | null
   tipoContrato: string | null
+  confidencialidad: boolean | null
   dd_identificacionContraparte: boolean | null
   dd_consultaListasRestrictivas: boolean | null
   dd_verificacionPep: boolean | null
@@ -54,24 +47,14 @@ export type TerceroMinAggregateOutputType = {
   dd_monitoreoActualizacion: boolean | null
   dd_senalesAlertaReporte: boolean | null
   aprobadoDebidaDiligencia: boolean | null
-  fechaAprobacion: Date | null
-  creadoEn: Date | null
-  actualizadoEn: Date | null
 }
 
 export type TerceroMaxAggregateOutputType = {
   id: number | null
   razonSocial: string | null
   nit: string | null
-  representanteLegal: string | null
-  cedulaRepresentante: string | null
-  correoFirma: string | null
-  direccionRepresentante: string | null
-  telefonoRepresentante: string | null
-  nombreContacto: string | null
-  telefonoContacto: string | null
-  correoContacto: string | null
   tipoContrato: string | null
+  confidencialidad: boolean | null
   dd_identificacionContraparte: boolean | null
   dd_consultaListasRestrictivas: boolean | null
   dd_verificacionPep: boolean | null
@@ -79,24 +62,14 @@ export type TerceroMaxAggregateOutputType = {
   dd_monitoreoActualizacion: boolean | null
   dd_senalesAlertaReporte: boolean | null
   aprobadoDebidaDiligencia: boolean | null
-  fechaAprobacion: Date | null
-  creadoEn: Date | null
-  actualizadoEn: Date | null
 }
 
 export type TerceroCountAggregateOutputType = {
   id: number
   razonSocial: number
   nit: number
-  representanteLegal: number
-  cedulaRepresentante: number
-  correoFirma: number
-  direccionRepresentante: number
-  telefonoRepresentante: number
-  nombreContacto: number
-  telefonoContacto: number
-  correoContacto: number
   tipoContrato: number
+  confidencialidad: number
   dd_identificacionContraparte: number
   dd_consultaListasRestrictivas: number
   dd_verificacionPep: number
@@ -104,9 +77,6 @@ export type TerceroCountAggregateOutputType = {
   dd_monitoreoActualizacion: number
   dd_senalesAlertaReporte: number
   aprobadoDebidaDiligencia: number
-  fechaAprobacion: number
-  creadoEn: number
-  actualizadoEn: number
   _all: number
 }
 
@@ -123,15 +93,8 @@ export type TerceroMinAggregateInputType = {
   id?: true
   razonSocial?: true
   nit?: true
-  representanteLegal?: true
-  cedulaRepresentante?: true
-  correoFirma?: true
-  direccionRepresentante?: true
-  telefonoRepresentante?: true
-  nombreContacto?: true
-  telefonoContacto?: true
-  correoContacto?: true
   tipoContrato?: true
+  confidencialidad?: true
   dd_identificacionContraparte?: true
   dd_consultaListasRestrictivas?: true
   dd_verificacionPep?: true
@@ -139,24 +102,14 @@ export type TerceroMinAggregateInputType = {
   dd_monitoreoActualizacion?: true
   dd_senalesAlertaReporte?: true
   aprobadoDebidaDiligencia?: true
-  fechaAprobacion?: true
-  creadoEn?: true
-  actualizadoEn?: true
 }
 
 export type TerceroMaxAggregateInputType = {
   id?: true
   razonSocial?: true
   nit?: true
-  representanteLegal?: true
-  cedulaRepresentante?: true
-  correoFirma?: true
-  direccionRepresentante?: true
-  telefonoRepresentante?: true
-  nombreContacto?: true
-  telefonoContacto?: true
-  correoContacto?: true
   tipoContrato?: true
+  confidencialidad?: true
   dd_identificacionContraparte?: true
   dd_consultaListasRestrictivas?: true
   dd_verificacionPep?: true
@@ -164,24 +117,14 @@ export type TerceroMaxAggregateInputType = {
   dd_monitoreoActualizacion?: true
   dd_senalesAlertaReporte?: true
   aprobadoDebidaDiligencia?: true
-  fechaAprobacion?: true
-  creadoEn?: true
-  actualizadoEn?: true
 }
 
 export type TerceroCountAggregateInputType = {
   id?: true
   razonSocial?: true
   nit?: true
-  representanteLegal?: true
-  cedulaRepresentante?: true
-  correoFirma?: true
-  direccionRepresentante?: true
-  telefonoRepresentante?: true
-  nombreContacto?: true
-  telefonoContacto?: true
-  correoContacto?: true
   tipoContrato?: true
+  confidencialidad?: true
   dd_identificacionContraparte?: true
   dd_consultaListasRestrictivas?: true
   dd_verificacionPep?: true
@@ -189,9 +132,6 @@ export type TerceroCountAggregateInputType = {
   dd_monitoreoActualizacion?: true
   dd_senalesAlertaReporte?: true
   aprobadoDebidaDiligencia?: true
-  fechaAprobacion?: true
-  creadoEn?: true
-  actualizadoEn?: true
   _all?: true
 }
 
@@ -285,15 +225,8 @@ export type TerceroGroupByOutputType = {
   id: number
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto: string | null
-  telefonoContacto: string | null
-  correoContacto: string | null
   tipoContrato: string
+  confidencialidad: boolean
   dd_identificacionContraparte: boolean
   dd_consultaListasRestrictivas: boolean
   dd_verificacionPep: boolean
@@ -301,9 +234,6 @@ export type TerceroGroupByOutputType = {
   dd_monitoreoActualizacion: boolean
   dd_senalesAlertaReporte: boolean
   aprobadoDebidaDiligencia: boolean
-  fechaAprobacion: Date | null
-  creadoEn: Date
-  actualizadoEn: Date
   _count: TerceroCountAggregateOutputType | null
   _avg: TerceroAvgAggregateOutputType | null
   _sum: TerceroSumAggregateOutputType | null
@@ -333,15 +263,8 @@ export type TerceroWhereInput = {
   id?: Prisma.IntFilter<"Tercero"> | number
   razonSocial?: Prisma.StringFilter<"Tercero"> | string
   nit?: Prisma.StringFilter<"Tercero"> | string
-  representanteLegal?: Prisma.StringFilter<"Tercero"> | string
-  cedulaRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  correoFirma?: Prisma.StringFilter<"Tercero"> | string
-  direccionRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  telefonoRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  nombreContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
-  telefonoContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
-  correoContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
   tipoContrato?: Prisma.StringFilter<"Tercero"> | string
+  confidencialidad?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_identificacionContraparte?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_verificacionPep?: Prisma.BoolFilter<"Tercero"> | boolean
@@ -349,9 +272,6 @@ export type TerceroWhereInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFilter<"Tercero"> | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFilter<"Tercero"> | boolean
-  fechaAprobacion?: Prisma.DateTimeNullableFilter<"Tercero"> | Date | string | null
-  creadoEn?: Prisma.DateTimeFilter<"Tercero"> | Date | string
-  actualizadoEn?: Prisma.DateTimeFilter<"Tercero"> | Date | string
   solicitudes?: Prisma.SolicitudListRelationFilter
 }
 
@@ -359,15 +279,8 @@ export type TerceroOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   razonSocial?: Prisma.SortOrder
   nit?: Prisma.SortOrder
-  representanteLegal?: Prisma.SortOrder
-  cedulaRepresentante?: Prisma.SortOrder
-  correoFirma?: Prisma.SortOrder
-  direccionRepresentante?: Prisma.SortOrder
-  telefonoRepresentante?: Prisma.SortOrder
-  nombreContacto?: Prisma.SortOrderInput | Prisma.SortOrder
-  telefonoContacto?: Prisma.SortOrderInput | Prisma.SortOrder
-  correoContacto?: Prisma.SortOrderInput | Prisma.SortOrder
   tipoContrato?: Prisma.SortOrder
+  confidencialidad?: Prisma.SortOrder
   dd_identificacionContraparte?: Prisma.SortOrder
   dd_consultaListasRestrictivas?: Prisma.SortOrder
   dd_verificacionPep?: Prisma.SortOrder
@@ -375,28 +288,18 @@ export type TerceroOrderByWithRelationInput = {
   dd_monitoreoActualizacion?: Prisma.SortOrder
   dd_senalesAlertaReporte?: Prisma.SortOrder
   aprobadoDebidaDiligencia?: Prisma.SortOrder
-  fechaAprobacion?: Prisma.SortOrderInput | Prisma.SortOrder
-  creadoEn?: Prisma.SortOrder
-  actualizadoEn?: Prisma.SortOrder
   solicitudes?: Prisma.SolicitudOrderByRelationAggregateInput
 }
 
 export type TerceroWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  nit?: string
+  razonSocial?: string
   AND?: Prisma.TerceroWhereInput | Prisma.TerceroWhereInput[]
   OR?: Prisma.TerceroWhereInput[]
   NOT?: Prisma.TerceroWhereInput | Prisma.TerceroWhereInput[]
-  razonSocial?: Prisma.StringFilter<"Tercero"> | string
-  representanteLegal?: Prisma.StringFilter<"Tercero"> | string
-  cedulaRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  correoFirma?: Prisma.StringFilter<"Tercero"> | string
-  direccionRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  telefonoRepresentante?: Prisma.StringFilter<"Tercero"> | string
-  nombreContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
-  telefonoContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
-  correoContacto?: Prisma.StringNullableFilter<"Tercero"> | string | null
+  nit?: Prisma.StringFilter<"Tercero"> | string
   tipoContrato?: Prisma.StringFilter<"Tercero"> | string
+  confidencialidad?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_identificacionContraparte?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_verificacionPep?: Prisma.BoolFilter<"Tercero"> | boolean
@@ -404,25 +307,15 @@ export type TerceroWhereUniqueInput = Prisma.AtLeast<{
   dd_monitoreoActualizacion?: Prisma.BoolFilter<"Tercero"> | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFilter<"Tercero"> | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFilter<"Tercero"> | boolean
-  fechaAprobacion?: Prisma.DateTimeNullableFilter<"Tercero"> | Date | string | null
-  creadoEn?: Prisma.DateTimeFilter<"Tercero"> | Date | string
-  actualizadoEn?: Prisma.DateTimeFilter<"Tercero"> | Date | string
   solicitudes?: Prisma.SolicitudListRelationFilter
-}, "id" | "nit">
+}, "id" | "razonSocial">
 
 export type TerceroOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   razonSocial?: Prisma.SortOrder
   nit?: Prisma.SortOrder
-  representanteLegal?: Prisma.SortOrder
-  cedulaRepresentante?: Prisma.SortOrder
-  correoFirma?: Prisma.SortOrder
-  direccionRepresentante?: Prisma.SortOrder
-  telefonoRepresentante?: Prisma.SortOrder
-  nombreContacto?: Prisma.SortOrderInput | Prisma.SortOrder
-  telefonoContacto?: Prisma.SortOrderInput | Prisma.SortOrder
-  correoContacto?: Prisma.SortOrderInput | Prisma.SortOrder
   tipoContrato?: Prisma.SortOrder
+  confidencialidad?: Prisma.SortOrder
   dd_identificacionContraparte?: Prisma.SortOrder
   dd_consultaListasRestrictivas?: Prisma.SortOrder
   dd_verificacionPep?: Prisma.SortOrder
@@ -430,9 +323,6 @@ export type TerceroOrderByWithAggregationInput = {
   dd_monitoreoActualizacion?: Prisma.SortOrder
   dd_senalesAlertaReporte?: Prisma.SortOrder
   aprobadoDebidaDiligencia?: Prisma.SortOrder
-  fechaAprobacion?: Prisma.SortOrderInput | Prisma.SortOrder
-  creadoEn?: Prisma.SortOrder
-  actualizadoEn?: Prisma.SortOrder
   _count?: Prisma.TerceroCountOrderByAggregateInput
   _avg?: Prisma.TerceroAvgOrderByAggregateInput
   _max?: Prisma.TerceroMaxOrderByAggregateInput
@@ -447,15 +337,8 @@ export type TerceroScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Tercero"> | number
   razonSocial?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
   nit?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  representanteLegal?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  cedulaRepresentante?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  correoFirma?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  direccionRepresentante?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  telefonoRepresentante?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
-  nombreContacto?: Prisma.StringNullableWithAggregatesFilter<"Tercero"> | string | null
-  telefonoContacto?: Prisma.StringNullableWithAggregatesFilter<"Tercero"> | string | null
-  correoContacto?: Prisma.StringNullableWithAggregatesFilter<"Tercero"> | string | null
   tipoContrato?: Prisma.StringWithAggregatesFilter<"Tercero"> | string
+  confidencialidad?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
   dd_identificacionContraparte?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
   dd_verificacionPep?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
@@ -463,23 +346,13 @@ export type TerceroScalarWhereWithAggregatesInput = {
   dd_monitoreoActualizacion?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
   dd_senalesAlertaReporte?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolWithAggregatesFilter<"Tercero"> | boolean
-  fechaAprobacion?: Prisma.DateTimeNullableWithAggregatesFilter<"Tercero"> | Date | string | null
-  creadoEn?: Prisma.DateTimeWithAggregatesFilter<"Tercero"> | Date | string
-  actualizadoEn?: Prisma.DateTimeWithAggregatesFilter<"Tercero"> | Date | string
 }
 
 export type TerceroCreateInput = {
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto?: string | null
-  telefonoContacto?: string | null
-  correoContacto?: string | null
   tipoContrato: string
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -487,9 +360,6 @@ export type TerceroCreateInput = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: Date | string | null
-  creadoEn?: Date | string
-  actualizadoEn?: Date | string
   solicitudes?: Prisma.SolicitudCreateNestedManyWithoutTerceroInput
 }
 
@@ -497,15 +367,8 @@ export type TerceroUncheckedCreateInput = {
   id?: number
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto?: string | null
-  telefonoContacto?: string | null
-  correoContacto?: string | null
   tipoContrato: string
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -513,24 +376,14 @@ export type TerceroUncheckedCreateInput = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: Date | string | null
-  creadoEn?: Date | string
-  actualizadoEn?: Date | string
   solicitudes?: Prisma.SolicitudUncheckedCreateNestedManyWithoutTerceroInput
 }
 
 export type TerceroUpdateInput = {
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -538,9 +391,6 @@ export type TerceroUpdateInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   solicitudes?: Prisma.SolicitudUpdateManyWithoutTerceroNestedInput
 }
 
@@ -548,15 +398,8 @@ export type TerceroUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -564,9 +407,6 @@ export type TerceroUncheckedUpdateInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   solicitudes?: Prisma.SolicitudUncheckedUpdateManyWithoutTerceroNestedInput
 }
 
@@ -574,15 +414,8 @@ export type TerceroCreateManyInput = {
   id?: number
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto?: string | null
-  telefonoContacto?: string | null
-  correoContacto?: string | null
   tipoContrato: string
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -590,23 +423,13 @@ export type TerceroCreateManyInput = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: Date | string | null
-  creadoEn?: Date | string
-  actualizadoEn?: Date | string
 }
 
 export type TerceroUpdateManyMutationInput = {
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -614,24 +437,14 @@ export type TerceroUpdateManyMutationInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TerceroUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -639,24 +452,14 @@ export type TerceroUncheckedUpdateManyInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TerceroCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   razonSocial?: Prisma.SortOrder
   nit?: Prisma.SortOrder
-  representanteLegal?: Prisma.SortOrder
-  cedulaRepresentante?: Prisma.SortOrder
-  correoFirma?: Prisma.SortOrder
-  direccionRepresentante?: Prisma.SortOrder
-  telefonoRepresentante?: Prisma.SortOrder
-  nombreContacto?: Prisma.SortOrder
-  telefonoContacto?: Prisma.SortOrder
-  correoContacto?: Prisma.SortOrder
   tipoContrato?: Prisma.SortOrder
+  confidencialidad?: Prisma.SortOrder
   dd_identificacionContraparte?: Prisma.SortOrder
   dd_consultaListasRestrictivas?: Prisma.SortOrder
   dd_verificacionPep?: Prisma.SortOrder
@@ -664,9 +467,6 @@ export type TerceroCountOrderByAggregateInput = {
   dd_monitoreoActualizacion?: Prisma.SortOrder
   dd_senalesAlertaReporte?: Prisma.SortOrder
   aprobadoDebidaDiligencia?: Prisma.SortOrder
-  fechaAprobacion?: Prisma.SortOrder
-  creadoEn?: Prisma.SortOrder
-  actualizadoEn?: Prisma.SortOrder
 }
 
 export type TerceroAvgOrderByAggregateInput = {
@@ -677,15 +477,8 @@ export type TerceroMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   razonSocial?: Prisma.SortOrder
   nit?: Prisma.SortOrder
-  representanteLegal?: Prisma.SortOrder
-  cedulaRepresentante?: Prisma.SortOrder
-  correoFirma?: Prisma.SortOrder
-  direccionRepresentante?: Prisma.SortOrder
-  telefonoRepresentante?: Prisma.SortOrder
-  nombreContacto?: Prisma.SortOrder
-  telefonoContacto?: Prisma.SortOrder
-  correoContacto?: Prisma.SortOrder
   tipoContrato?: Prisma.SortOrder
+  confidencialidad?: Prisma.SortOrder
   dd_identificacionContraparte?: Prisma.SortOrder
   dd_consultaListasRestrictivas?: Prisma.SortOrder
   dd_verificacionPep?: Prisma.SortOrder
@@ -693,24 +486,14 @@ export type TerceroMaxOrderByAggregateInput = {
   dd_monitoreoActualizacion?: Prisma.SortOrder
   dd_senalesAlertaReporte?: Prisma.SortOrder
   aprobadoDebidaDiligencia?: Prisma.SortOrder
-  fechaAprobacion?: Prisma.SortOrder
-  creadoEn?: Prisma.SortOrder
-  actualizadoEn?: Prisma.SortOrder
 }
 
 export type TerceroMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   razonSocial?: Prisma.SortOrder
   nit?: Prisma.SortOrder
-  representanteLegal?: Prisma.SortOrder
-  cedulaRepresentante?: Prisma.SortOrder
-  correoFirma?: Prisma.SortOrder
-  direccionRepresentante?: Prisma.SortOrder
-  telefonoRepresentante?: Prisma.SortOrder
-  nombreContacto?: Prisma.SortOrder
-  telefonoContacto?: Prisma.SortOrder
-  correoContacto?: Prisma.SortOrder
   tipoContrato?: Prisma.SortOrder
+  confidencialidad?: Prisma.SortOrder
   dd_identificacionContraparte?: Prisma.SortOrder
   dd_consultaListasRestrictivas?: Prisma.SortOrder
   dd_verificacionPep?: Prisma.SortOrder
@@ -718,9 +501,6 @@ export type TerceroMinOrderByAggregateInput = {
   dd_monitoreoActualizacion?: Prisma.SortOrder
   dd_senalesAlertaReporte?: Prisma.SortOrder
   aprobadoDebidaDiligencia?: Prisma.SortOrder
-  fechaAprobacion?: Prisma.SortOrder
-  creadoEn?: Prisma.SortOrder
-  actualizadoEn?: Prisma.SortOrder
 }
 
 export type TerceroSumOrderByAggregateInput = {
@@ -751,15 +531,8 @@ export type TerceroUpdateOneWithoutSolicitudesNestedInput = {
 export type TerceroCreateWithoutSolicitudesInput = {
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto?: string | null
-  telefonoContacto?: string | null
-  correoContacto?: string | null
   tipoContrato: string
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -767,24 +540,14 @@ export type TerceroCreateWithoutSolicitudesInput = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: Date | string | null
-  creadoEn?: Date | string
-  actualizadoEn?: Date | string
 }
 
 export type TerceroUncheckedCreateWithoutSolicitudesInput = {
   id?: number
   razonSocial: string
   nit: string
-  representanteLegal: string
-  cedulaRepresentante: string
-  correoFirma: string
-  direccionRepresentante: string
-  telefonoRepresentante: string
-  nombreContacto?: string | null
-  telefonoContacto?: string | null
-  correoContacto?: string | null
   tipoContrato: string
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -792,9 +555,6 @@ export type TerceroUncheckedCreateWithoutSolicitudesInput = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: Date | string | null
-  creadoEn?: Date | string
-  actualizadoEn?: Date | string
 }
 
 export type TerceroCreateOrConnectWithoutSolicitudesInput = {
@@ -816,15 +576,8 @@ export type TerceroUpdateToOneWithWhereWithoutSolicitudesInput = {
 export type TerceroUpdateWithoutSolicitudesInput = {
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -832,24 +585,14 @@ export type TerceroUpdateWithoutSolicitudesInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TerceroUncheckedUpdateWithoutSolicitudesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   razonSocial?: Prisma.StringFieldUpdateOperationsInput | string
   nit?: Prisma.StringFieldUpdateOperationsInput | string
-  representanteLegal?: Prisma.StringFieldUpdateOperationsInput | string
-  cedulaRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  correoFirma?: Prisma.StringFieldUpdateOperationsInput | string
-  direccionRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  telefonoRepresentante?: Prisma.StringFieldUpdateOperationsInput | string
-  nombreContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telefonoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  correoContacto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipoContrato?: Prisma.StringFieldUpdateOperationsInput | string
+  confidencialidad?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_identificacionContraparte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_consultaListasRestrictivas?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_verificacionPep?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -857,9 +600,6 @@ export type TerceroUncheckedUpdateWithoutSolicitudesInput = {
   dd_monitoreoActualizacion?: Prisma.BoolFieldUpdateOperationsInput | boolean
   dd_senalesAlertaReporte?: Prisma.BoolFieldUpdateOperationsInput | boolean
   aprobadoDebidaDiligencia?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaAprobacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  creadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  actualizadoEn?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -897,15 +637,8 @@ export type TerceroSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   razonSocial?: boolean
   nit?: boolean
-  representanteLegal?: boolean
-  cedulaRepresentante?: boolean
-  correoFirma?: boolean
-  direccionRepresentante?: boolean
-  telefonoRepresentante?: boolean
-  nombreContacto?: boolean
-  telefonoContacto?: boolean
-  correoContacto?: boolean
   tipoContrato?: boolean
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -913,9 +646,6 @@ export type TerceroSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: boolean
-  creadoEn?: boolean
-  actualizadoEn?: boolean
   solicitudes?: boolean | Prisma.Tercero$solicitudesArgs<ExtArgs>
   _count?: boolean | Prisma.TerceroCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tercero"]>
@@ -924,15 +654,8 @@ export type TerceroSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   razonSocial?: boolean
   nit?: boolean
-  representanteLegal?: boolean
-  cedulaRepresentante?: boolean
-  correoFirma?: boolean
-  direccionRepresentante?: boolean
-  telefonoRepresentante?: boolean
-  nombreContacto?: boolean
-  telefonoContacto?: boolean
-  correoContacto?: boolean
   tipoContrato?: boolean
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -940,24 +663,14 @@ export type TerceroSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: boolean
-  creadoEn?: boolean
-  actualizadoEn?: boolean
 }, ExtArgs["result"]["tercero"]>
 
 export type TerceroSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   razonSocial?: boolean
   nit?: boolean
-  representanteLegal?: boolean
-  cedulaRepresentante?: boolean
-  correoFirma?: boolean
-  direccionRepresentante?: boolean
-  telefonoRepresentante?: boolean
-  nombreContacto?: boolean
-  telefonoContacto?: boolean
-  correoContacto?: boolean
   tipoContrato?: boolean
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -965,24 +678,14 @@ export type TerceroSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: boolean
-  creadoEn?: boolean
-  actualizadoEn?: boolean
 }, ExtArgs["result"]["tercero"]>
 
 export type TerceroSelectScalar = {
   id?: boolean
   razonSocial?: boolean
   nit?: boolean
-  representanteLegal?: boolean
-  cedulaRepresentante?: boolean
-  correoFirma?: boolean
-  direccionRepresentante?: boolean
-  telefonoRepresentante?: boolean
-  nombreContacto?: boolean
-  telefonoContacto?: boolean
-  correoContacto?: boolean
   tipoContrato?: boolean
+  confidencialidad?: boolean
   dd_identificacionContraparte?: boolean
   dd_consultaListasRestrictivas?: boolean
   dd_verificacionPep?: boolean
@@ -990,12 +693,9 @@ export type TerceroSelectScalar = {
   dd_monitoreoActualizacion?: boolean
   dd_senalesAlertaReporte?: boolean
   aprobadoDebidaDiligencia?: boolean
-  fechaAprobacion?: boolean
-  creadoEn?: boolean
-  actualizadoEn?: boolean
 }
 
-export type TerceroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "razonSocial" | "nit" | "representanteLegal" | "cedulaRepresentante" | "correoFirma" | "direccionRepresentante" | "telefonoRepresentante" | "nombreContacto" | "telefonoContacto" | "correoContacto" | "tipoContrato" | "dd_identificacionContraparte" | "dd_consultaListasRestrictivas" | "dd_verificacionPep" | "dd_conocimientoNegocio" | "dd_monitoreoActualizacion" | "dd_senalesAlertaReporte" | "aprobadoDebidaDiligencia" | "fechaAprobacion" | "creadoEn" | "actualizadoEn", ExtArgs["result"]["tercero"]>
+export type TerceroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "razonSocial" | "nit" | "tipoContrato" | "confidencialidad" | "dd_identificacionContraparte" | "dd_consultaListasRestrictivas" | "dd_verificacionPep" | "dd_conocimientoNegocio" | "dd_monitoreoActualizacion" | "dd_senalesAlertaReporte" | "aprobadoDebidaDiligencia", ExtArgs["result"]["tercero"]>
 export type TerceroInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   solicitudes?: boolean | Prisma.Tercero$solicitudesArgs<ExtArgs>
   _count?: boolean | Prisma.TerceroCountOutputTypeDefaultArgs<ExtArgs>
@@ -1012,15 +712,8 @@ export type $TerceroPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: number
     razonSocial: string
     nit: string
-    representanteLegal: string
-    cedulaRepresentante: string
-    correoFirma: string
-    direccionRepresentante: string
-    telefonoRepresentante: string
-    nombreContacto: string | null
-    telefonoContacto: string | null
-    correoContacto: string | null
     tipoContrato: string
+    confidencialidad: boolean
     dd_identificacionContraparte: boolean
     dd_consultaListasRestrictivas: boolean
     dd_verificacionPep: boolean
@@ -1028,9 +721,6 @@ export type $TerceroPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     dd_monitoreoActualizacion: boolean
     dd_senalesAlertaReporte: boolean
     aprobadoDebidaDiligencia: boolean
-    fechaAprobacion: Date | null
-    creadoEn: Date
-    actualizadoEn: Date
   }, ExtArgs["result"]["tercero"]>
   composites: {}
 }
@@ -1458,15 +1148,8 @@ export interface TerceroFieldRefs {
   readonly id: Prisma.FieldRef<"Tercero", 'Int'>
   readonly razonSocial: Prisma.FieldRef<"Tercero", 'String'>
   readonly nit: Prisma.FieldRef<"Tercero", 'String'>
-  readonly representanteLegal: Prisma.FieldRef<"Tercero", 'String'>
-  readonly cedulaRepresentante: Prisma.FieldRef<"Tercero", 'String'>
-  readonly correoFirma: Prisma.FieldRef<"Tercero", 'String'>
-  readonly direccionRepresentante: Prisma.FieldRef<"Tercero", 'String'>
-  readonly telefonoRepresentante: Prisma.FieldRef<"Tercero", 'String'>
-  readonly nombreContacto: Prisma.FieldRef<"Tercero", 'String'>
-  readonly telefonoContacto: Prisma.FieldRef<"Tercero", 'String'>
-  readonly correoContacto: Prisma.FieldRef<"Tercero", 'String'>
   readonly tipoContrato: Prisma.FieldRef<"Tercero", 'String'>
+  readonly confidencialidad: Prisma.FieldRef<"Tercero", 'Boolean'>
   readonly dd_identificacionContraparte: Prisma.FieldRef<"Tercero", 'Boolean'>
   readonly dd_consultaListasRestrictivas: Prisma.FieldRef<"Tercero", 'Boolean'>
   readonly dd_verificacionPep: Prisma.FieldRef<"Tercero", 'Boolean'>
@@ -1474,9 +1157,6 @@ export interface TerceroFieldRefs {
   readonly dd_monitoreoActualizacion: Prisma.FieldRef<"Tercero", 'Boolean'>
   readonly dd_senalesAlertaReporte: Prisma.FieldRef<"Tercero", 'Boolean'>
   readonly aprobadoDebidaDiligencia: Prisma.FieldRef<"Tercero", 'Boolean'>
-  readonly fechaAprobacion: Prisma.FieldRef<"Tercero", 'DateTime'>
-  readonly creadoEn: Prisma.FieldRef<"Tercero", 'DateTime'>
-  readonly actualizadoEn: Prisma.FieldRef<"Tercero", 'DateTime'>
 }
     
 

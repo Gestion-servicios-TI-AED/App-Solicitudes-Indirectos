@@ -108,33 +108,21 @@ model AprobadorFrente {
 // ─── Terceros / Debida Diligencia ────────────────────────────────────────────
 
 model Tercero {
-  id                     Int      @id @default(autoincrement())
-  razonSocial            String
-  nit                    String   @unique
-  representanteLegal     String
-  cedulaRepresentante    String
-  correoFirma            String
-  direccionRepresentante String
-  telefonoRepresentante  String
-  nombreContacto         String?
-  telefonoContacto       String?
-  correoContacto         String?
-  tipoContrato           String
+  id                           Int      @id @default(autoincrement())
+  razonSocial                  String   @unique
+  nit                          String
+  tipoContrato                 String
+  confidencialidad             Boolean  @default(false)   // ← NUEVO
 
-  dd_identificacionContraparte  Boolean @default(false)
-  dd_consultaListasRestrictivas Boolean @default(false)
-  dd_verificacionPep            Boolean @default(false)
-  dd_conocimientoNegocio        Boolean @default(false)
-  dd_monitoreoActualizacion     Boolean @default(false)
-  dd_senalesAlertaReporte       Boolean @default(false)
-
-  aprobadoDebidaDiligencia Boolean   @default(false)
-  fechaAprobacion          DateTime?
+  dd_identificacionContraparte      Boolean @default(false)
+  dd_consultaListasRestrictivas     Boolean @default(false)
+  dd_verificacionPep                Boolean @default(false)
+  dd_conocimientoNegocio            Boolean @default(false)
+  dd_monitoreoActualizacion         Boolean @default(false)
+  dd_senalesAlertaReporte           Boolean @default(false)
+  aprobadoDebidaDiligencia          Boolean @default(false)
 
   solicitudes Solicitud[]
-
-  creadoEn      DateTime @default(now())
-  actualizadoEn DateTime @updatedAt
 }
 
 // ─── Solicitudes ─────────────────────────────────────────────────────────────

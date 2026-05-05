@@ -1737,25 +1737,15 @@ export const TerceroScalarFieldEnum = {
   id: 'id',
   razonSocial: 'razonSocial',
   nit: 'nit',
-  representanteLegal: 'representanteLegal',
-  cedulaRepresentante: 'cedulaRepresentante',
-  correoFirma: 'correoFirma',
-  direccionRepresentante: 'direccionRepresentante',
-  telefonoRepresentante: 'telefonoRepresentante',
-  nombreContacto: 'nombreContacto',
-  telefonoContacto: 'telefonoContacto',
-  correoContacto: 'correoContacto',
   tipoContrato: 'tipoContrato',
+  confidencialidad: 'confidencialidad',
   dd_identificacionContraparte: 'dd_identificacionContraparte',
   dd_consultaListasRestrictivas: 'dd_consultaListasRestrictivas',
   dd_verificacionPep: 'dd_verificacionPep',
   dd_conocimientoNegocio: 'dd_conocimientoNegocio',
   dd_monitoreoActualizacion: 'dd_monitoreoActualizacion',
   dd_senalesAlertaReporte: 'dd_senalesAlertaReporte',
-  aprobadoDebidaDiligencia: 'aprobadoDebidaDiligencia',
-  fechaAprobacion: 'fechaAprobacion',
-  creadoEn: 'creadoEn',
-  actualizadoEn: 'actualizadoEn'
+  aprobadoDebidaDiligencia: 'aprobadoDebidaDiligencia'
 } as const
 
 export type TerceroScalarFieldEnum = (typeof TerceroScalarFieldEnum)[keyof typeof TerceroScalarFieldEnum]

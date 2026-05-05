@@ -1,22 +1,19 @@
 import { PrismaClient } from "../src/generated/prisma";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import bcrypt from "bcryptjs";
-import "dotenv/config";
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+const adapter = new PrismaBetterSqlite3({ url: process.env.DATABASE_URL ?? "file:/app/data/prod.db" });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("🌱 Seeding database...");
 
-  // Proyecto Baia Kristal
   const proyecto = await prisma.proyecto.upsert({
     where: { id: 1 },
     update: {},
     create: { nombre: "Baia Kristal" },
   });
 
-  // Proyecto Oliv
   const proyectoOliv = await prisma.proyecto.upsert({
     where: { id: 2 },
     update: {},
@@ -28,12 +25,12 @@ async function main() {
     { nombre: "KALIZA 2", proyectoId: proyecto.id },
     { nombre: "KALIZA 3", proyectoId: proyecto.id },
     { nombre: "KALIZA 4", proyectoId: proyecto.id },
-    { nombre: "KALA 1",   proyectoId: proyecto.id },
-    { nombre: "KALA 2",   proyectoId: proyecto.id },
-    { nombre: "KALA 3",   proyectoId: proyecto.id },
-    { nombre: "KALA 4",   proyectoId: proyecto.id },
-    { nombre: "LIVA",     proyectoId: proyectoOliv.id },
-    { nombre: "SEIVA",    proyectoId: proyectoOliv.id },
+    { nombre: "KALA 1", proyectoId: proyecto.id },
+    { nombre: "KALA 2", proyectoId: proyecto.id },
+    { nombre: "KALA 3", proyectoId: proyecto.id },
+    { nombre: "KALA 4", proyectoId: proyecto.id },
+    { nombre: "LIVA", proyectoId: proyectoOliv.id },
+    { nombre: "SEIVA", proyectoId: proyectoOliv.id },
   ];
 
   const frentes: Array<{ id: number; nombre: string }> = [];
@@ -48,7 +45,6 @@ async function main() {
 
   const frenteMap = Object.fromEntries(frentes.map((f) => [f.nombre, f.id]));
 
-  // Usuarios
   const hash = (p: string) => bcrypt.hashSync(p, 10);
 
   const usersData = [
@@ -144,7 +140,6 @@ async function main() {
     });
     createdUsers.push(user);
 
-    // Asignar frentes
     for (const nombreFrente of u.frentes) {
       const frenteId = frenteMap[nombreFrente];
       if (frenteId) {
@@ -156,10 +151,6 @@ async function main() {
       }
     }
   }
-
-  // Configuración de aprobadores
-  const crodriguez = createdUsers.find((u) => u.email === "crodriguez@baiak.com")!;
-  const vtorres = createdUsers.find((u) => u.email === "vtorres@baiak.com")!;
 
   const aprobadoresConfig = [
     { frente: "KALIZA 1", aprobadorEmail: "crodriguez@baiak.com" },
@@ -184,7 +175,6 @@ async function main() {
     }
   }
 
-  // Contadores de consecutivos
   const tipos = [
     "ORDEN_SERVICIO", "CONTRATO", "OTROSI_TIEMPO", "OTROSI_TIEMPO_CANTIDAD",
     "TRAMITE_CUENTA", "TRAMITE_FACTURAS", "TRAMITE_CUENTAS_RECURRENTES",

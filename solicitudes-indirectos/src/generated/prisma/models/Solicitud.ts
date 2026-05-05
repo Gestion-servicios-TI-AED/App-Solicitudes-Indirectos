@@ -1501,7 +1501,6 @@ export type SolicitudCreateOrConnectWithoutSolicitanteInput = {
 
 export type SolicitudCreateManySolicitanteInputEnvelope = {
   data: Prisma.SolicitudCreateManySolicitanteInput | Prisma.SolicitudCreateManySolicitanteInput[]
-  skipDuplicates?: boolean
 }
 
 export type SolicitudCreateWithoutAprobadorInput = {
@@ -1604,7 +1603,6 @@ export type SolicitudCreateOrConnectWithoutAprobadorInput = {
 
 export type SolicitudCreateManyAprobadorInputEnvelope = {
   data: Prisma.SolicitudCreateManyAprobadorInput | Prisma.SolicitudCreateManyAprobadorInput[]
-  skipDuplicates?: boolean
 }
 
 export type SolicitudUpsertWithWhereUniqueWithoutSolicitanteInput = {
@@ -1788,7 +1786,6 @@ export type SolicitudCreateOrConnectWithoutTerceroInput = {
 
 export type SolicitudCreateManyTerceroInputEnvelope = {
   data: Prisma.SolicitudCreateManyTerceroInput | Prisma.SolicitudCreateManyTerceroInput[]
-  skipDuplicates?: boolean
 }
 
 export type SolicitudUpsertWithWhereUniqueWithoutTerceroInput = {
@@ -3765,7 +3762,6 @@ export type SolicitudCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * The data used to create many Solicituds.
    */
   data: Prisma.SolicitudCreateManyInput | Prisma.SolicitudCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -3784,7 +3780,6 @@ export type SolicitudCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many Solicituds.
    */
   data: Prisma.SolicitudCreateManyInput | Prisma.SolicitudCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

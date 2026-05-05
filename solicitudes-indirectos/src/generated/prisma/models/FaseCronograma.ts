@@ -486,7 +486,6 @@ export type FaseCronogramaCreateOrConnectWithoutCronogramaInput = {
 
 export type FaseCronogramaCreateManyCronogramaInputEnvelope = {
   data: Prisma.FaseCronogramaCreateManyCronogramaInput | Prisma.FaseCronogramaCreateManyCronogramaInput[]
-  skipDuplicates?: boolean
 }
 
 export type FaseCronogramaUpsertWithWhereUniqueWithoutCronogramaInput = {
@@ -1363,7 +1362,6 @@ export type FaseCronogramaCreateManyArgs<ExtArgs extends runtime.Types.Extension
    * The data used to create many FaseCronogramas.
    */
   data: Prisma.FaseCronogramaCreateManyInput | Prisma.FaseCronogramaCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1382,7 +1380,6 @@ export type FaseCronogramaCreateManyAndReturnArgs<ExtArgs extends runtime.Types.
    * The data used to create many FaseCronogramas.
    */
   data: Prisma.FaseCronogramaCreateManyInput | Prisma.FaseCronogramaCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

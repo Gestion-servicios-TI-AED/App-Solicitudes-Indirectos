@@ -403,7 +403,6 @@ export type FrenteUsuarioCreateOrConnectWithoutUserInput = {
 
 export type FrenteUsuarioCreateManyUserInputEnvelope = {
   data: Prisma.FrenteUsuarioCreateManyUserInput | Prisma.FrenteUsuarioCreateManyUserInput[]
-  skipDuplicates?: boolean
 }
 
 export type FrenteUsuarioUpsertWithWhereUniqueWithoutUserInput = {
@@ -445,7 +444,6 @@ export type FrenteUsuarioCreateOrConnectWithoutFrenteInput = {
 
 export type FrenteUsuarioCreateManyFrenteInputEnvelope = {
   data: Prisma.FrenteUsuarioCreateManyFrenteInput | Prisma.FrenteUsuarioCreateManyFrenteInput[]
-  skipDuplicates?: boolean
 }
 
 export type FrenteUsuarioUpsertWithWhereUniqueWithoutFrenteInput = {
@@ -1208,7 +1206,6 @@ export type FrenteUsuarioCreateManyArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many FrenteUsuarios.
    */
   data: Prisma.FrenteUsuarioCreateManyInput | Prisma.FrenteUsuarioCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1227,7 +1224,6 @@ export type FrenteUsuarioCreateManyAndReturnArgs<ExtArgs extends runtime.Types.E
    * The data used to create many FrenteUsuarios.
    */
   data: Prisma.FrenteUsuarioCreateManyInput | Prisma.FrenteUsuarioCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

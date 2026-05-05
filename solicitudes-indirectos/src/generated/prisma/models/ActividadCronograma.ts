@@ -524,7 +524,6 @@ export type ActividadCronogramaCreateOrConnectWithoutCronogramaInput = {
 
 export type ActividadCronogramaCreateManyCronogramaInputEnvelope = {
   data: Prisma.ActividadCronogramaCreateManyCronogramaInput | Prisma.ActividadCronogramaCreateManyCronogramaInput[]
-  skipDuplicates?: boolean
 }
 
 export type ActividadCronogramaUpsertWithWhereUniqueWithoutCronogramaInput = {
@@ -580,7 +579,6 @@ export type ActividadCronogramaCreateOrConnectWithoutFaseInput = {
 
 export type ActividadCronogramaCreateManyFaseInputEnvelope = {
   data: Prisma.ActividadCronogramaCreateManyFaseInput | Prisma.ActividadCronogramaCreateManyFaseInput[]
-  skipDuplicates?: boolean
 }
 
 export type ActividadCronogramaUpsertWithWhereUniqueWithoutFaseInput = {
@@ -1411,7 +1409,6 @@ export type ActividadCronogramaCreateManyArgs<ExtArgs extends runtime.Types.Exte
    * The data used to create many ActividadCronogramas.
    */
   data: Prisma.ActividadCronogramaCreateManyInput | Prisma.ActividadCronogramaCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1430,7 +1427,6 @@ export type ActividadCronogramaCreateManyAndReturnArgs<ExtArgs extends runtime.T
    * The data used to create many ActividadCronogramas.
    */
   data: Prisma.ActividadCronogramaCreateManyInput | Prisma.ActividadCronogramaCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

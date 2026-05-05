@@ -19,7 +19,33 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        console.log("========== LOGIN ATTEMPT ==========");
+        console.log("credentials:", credentials);
+
+        // 🔥 VERIFICAR ENV
+        console.log("DB URL:", process.env.DATABASE_URL);
+
+        // 🔥 TEST CONEXIÓN REAL A POSTGRES
+        try {
+          const test = await prisma.$queryRaw`SELECT 1`;
+          console.log("✅ DB CONNECTED:", test);
+        } catch (e) {
+          console.log("❌ DB CONNECTION ERROR:", e);
+          return null; // 🚨 si falla DB, no seguimos
+        }
+
+        if (!credentials?.email || !credentials?.password) {
+          console.log("❌ Missing credentials");
+          return null;
+        }
+
+        // 🔥 COUNT (verifica que estás en la DB correcta)
+        try {
+          const count = await prisma.user.count();
+          console.log("📊 USER COUNT:", count);
+        } catch (e) {
+          console.log("❌ USER COUNT ERROR:", e);
+        }
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
@@ -28,22 +54,48 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
-        if (!user || !user.password || !user.activo) return null;
+        console.log("👤 USER RESULT:", user);
+
+        if (!user) {
+          console.log("❌ User not found in this database");
+          return null;
+        }
+
+        console.log("🔐 Has password:", !!user.password);
+        console.log("🟢 activo value:", user.activo);
+
+        if (!user.password) {
+          console.log("❌ Missing password");
+          return null;
+        }
+
+        if (!user.activo) {
+          console.log("❌ User inactive (activo=false/null)");
+          return null;
+        }
 
         const passwordValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
-        if (!passwordValid) return null;
+
+        console.log("🔑 Password valid:", passwordValid);
+
+        if (!passwordValid) {
+          console.log("❌ Invalid password");
+          return null;
+        }
 
         let parsedRoles: string[];
+
         try {
           parsedRoles = JSON.parse(user.roles || '["SOLICITANTE"]');
-        } catch {
+        } catch (e) {
+          console.log("⚠️ Roles parse error:", e);
           parsedRoles = ["SOLICITANTE"];
         }
 
-        return {
+        const result = {
           id: user.id,
           email: user.email,
           name: user.nombre,
@@ -52,7 +104,11 @@ export const authOptions: NextAuthOptions = {
           cargo: user.cargo,
           telefono: user.telefono,
         };
-      },
+
+        console.log("✅ AUTH SUCCESS:", result);
+
+        return result;
+      }
     }),
   ],
   callbacks: {

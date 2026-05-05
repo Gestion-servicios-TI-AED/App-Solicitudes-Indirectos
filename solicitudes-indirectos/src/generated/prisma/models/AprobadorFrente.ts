@@ -1091,7 +1091,6 @@ export type AprobadorFrenteCreateManyArgs<ExtArgs extends runtime.Types.Extensio
    * The data used to create many AprobadorFrentes.
    */
   data: Prisma.AprobadorFrenteCreateManyInput | Prisma.AprobadorFrenteCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1110,7 +1109,6 @@ export type AprobadorFrenteCreateManyAndReturnArgs<ExtArgs extends runtime.Types
    * The data used to create many AprobadorFrentes.
    */
   data: Prisma.AprobadorFrenteCreateManyInput | Prisma.AprobadorFrenteCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

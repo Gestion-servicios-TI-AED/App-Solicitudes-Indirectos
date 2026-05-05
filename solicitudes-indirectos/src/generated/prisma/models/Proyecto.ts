@@ -1109,7 +1109,6 @@ export type ProyectoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * The data used to create many Proyectos.
    */
   data: Prisma.ProyectoCreateManyInput | Prisma.ProyectoCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1128,7 +1127,6 @@ export type ProyectoCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extens
    * The data used to create many Proyectos.
    */
   data: Prisma.ProyectoCreateManyInput | Prisma.ProyectoCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

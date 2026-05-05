@@ -982,7 +982,6 @@ export type ContadorConsecutivoCreateManyArgs<ExtArgs extends runtime.Types.Exte
    * The data used to create many ContadorConsecutivos.
    */
   data: Prisma.ContadorConsecutivoCreateManyInput | Prisma.ContadorConsecutivoCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1001,7 +1000,6 @@ export type ContadorConsecutivoCreateManyAndReturnArgs<ExtArgs extends runtime.T
    * The data used to create many ContadorConsecutivos.
    */
   data: Prisma.ContadorConsecutivoCreateManyInput | Prisma.ContadorConsecutivoCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

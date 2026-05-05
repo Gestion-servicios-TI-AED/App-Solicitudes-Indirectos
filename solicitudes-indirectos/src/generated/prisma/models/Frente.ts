@@ -429,7 +429,6 @@ export type FrenteCreateOrConnectWithoutProyectoInput = {
 
 export type FrenteCreateManyProyectoInputEnvelope = {
   data: Prisma.FrenteCreateManyProyectoInput | Prisma.FrenteCreateManyProyectoInput[]
-  skipDuplicates?: boolean
 }
 
 export type FrenteUpsertWithWhereUniqueWithoutProyectoInput = {
@@ -1313,7 +1312,6 @@ export type FrenteCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * The data used to create many Frentes.
    */
   data: Prisma.FrenteCreateManyInput | Prisma.FrenteCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1332,7 +1330,6 @@ export type FrenteCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensio
    * The data used to create many Frentes.
    */
   data: Prisma.FrenteCreateManyInput | Prisma.FrenteCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

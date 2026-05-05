@@ -494,7 +494,6 @@ export type HistorialSolicitudCreateOrConnectWithoutUsuarioInput = {
 
 export type HistorialSolicitudCreateManyUsuarioInputEnvelope = {
   data: Prisma.HistorialSolicitudCreateManyUsuarioInput | Prisma.HistorialSolicitudCreateManyUsuarioInput[]
-  skipDuplicates?: boolean
 }
 
 export type HistorialSolicitudUpsertWithWhereUniqueWithoutUsuarioInput = {
@@ -547,7 +546,6 @@ export type HistorialSolicitudCreateOrConnectWithoutSolicitudInput = {
 
 export type HistorialSolicitudCreateManySolicitudInputEnvelope = {
   data: Prisma.HistorialSolicitudCreateManySolicitudInput | Prisma.HistorialSolicitudCreateManySolicitudInput[]
-  skipDuplicates?: boolean
 }
 
 export type HistorialSolicitudUpsertWithWhereUniqueWithoutSolicitudInput = {
@@ -1364,7 +1362,6 @@ export type HistorialSolicitudCreateManyArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many HistorialSolicituds.
    */
   data: Prisma.HistorialSolicitudCreateManyInput | Prisma.HistorialSolicitudCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1383,7 +1380,6 @@ export type HistorialSolicitudCreateManyAndReturnArgs<ExtArgs extends runtime.Ty
    * The data used to create many HistorialSolicituds.
    */
   data: Prisma.HistorialSolicitudCreateManyInput | Prisma.HistorialSolicitudCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

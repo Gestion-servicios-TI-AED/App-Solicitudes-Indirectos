@@ -1391,7 +1391,6 @@ export type TerceroCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Terceros.
    */
   data: Prisma.TerceroCreateManyInput | Prisma.TerceroCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1410,7 +1409,6 @@ export type TerceroCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Terceros.
    */
   data: Prisma.TerceroCreateManyInput | Prisma.TerceroCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

@@ -1398,7 +1398,6 @@ export type CronogramaContratoCreateManyArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many CronogramaContratoes.
    */
   data: Prisma.CronogramaContratoCreateManyInput | Prisma.CronogramaContratoCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1417,7 +1416,6 @@ export type CronogramaContratoCreateManyAndReturnArgs<ExtArgs extends runtime.Ty
    * The data used to create many CronogramaContratoes.
    */
   data: Prisma.CronogramaContratoCreateManyInput | Prisma.CronogramaContratoCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

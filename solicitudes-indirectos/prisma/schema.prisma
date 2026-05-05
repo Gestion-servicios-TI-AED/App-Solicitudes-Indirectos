@@ -112,7 +112,11 @@ model Tercero {
   razonSocial                  String   @unique
   nit                          String
   tipoContrato                 String
-  confidencialidad             Boolean  @default(false)   // ← NUEVO
+  confidencialidad             Boolean  @default(false)
+  representanteLegal           String?
+  cedulaRepresentante          String?
+  correoFirma                  String?
+  direccionRepresentante       String?
 
   dd_identificacionContraparte      Boolean @default(false)
   dd_consultaListasRestrictivas     Boolean @default(false)

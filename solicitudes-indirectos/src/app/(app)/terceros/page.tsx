@@ -65,11 +65,11 @@ export default function TercerosPage() {
   const rol = session?.user?.rol;
   const canEdit = rol === "CONTRATOS" || rol === "ADMIN";
 
-  const [terceros, setTerceros]   = useState<Tercero[]>([]);
-  const [loading, setLoading]     = useState(true);
-  const [syncing, setSyncing]     = useState(false);
-  const [search, setSearch]       = useState("");
-  const [toasts, setToasts]       = useState<Toast[]>([]);
+  const [terceros, setTerceros] = useState<Tercero[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const [search, setSearch] = useState("");
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
   // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -156,7 +156,7 @@ export default function TercerosPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button
-            variant="outline"
+            variant="secondary"
             onClick={handleSync}
             disabled={syncing}
           >
@@ -237,7 +237,7 @@ export default function TercerosPage() {
               <tbody className="divide-y divide-gray-100">
                 {filtered.map((t) => {
                   const count = ddCount(t);
-                  const pct   = Math.round((count / 6) * 100);
+                  const pct = Math.round((count / 6) * 100);
 
                   return (
                     <tr key={t.id} className="hover:bg-gray-50 transition-colors">
@@ -251,9 +251,8 @@ export default function TercerosPage() {
                         <div className="flex items-center gap-2 min-w-[120px]">
                           <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                             <div
-                              className={`h-full rounded-full transition-all ${
-                                count === 6 ? "bg-green-500" : count >= 3 ? "bg-blue-500" : "bg-gray-400"
-                              }`}
+                              className={`h-full rounded-full transition-all ${count === 6 ? "bg-green-500" : count >= 3 ? "bg-blue-500" : "bg-gray-400"
+                                }`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>

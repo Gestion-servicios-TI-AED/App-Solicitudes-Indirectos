@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
     "@prisma/adapter-better-sqlite3",
     "better-sqlite3",
   ],
+  experimental: {
+    serverComponentsExternalPackages: [
+      "@prisma/adapter-better-sqlite3",
+      "better-sqlite3",
+    ],
+  },
 };
 
 export default nextConfig;
